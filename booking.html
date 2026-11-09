@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#16182d" />
-    <meta name="description" content="Share your project details and pay a project booking advance with Sam Jebaraj S." />
+    <meta name="description" content="Share your project details and pay a project booking advance to Sam Jebaraj S by UPI." />
     <title>Book a Project — Sam Jebaraj S</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="booking.css" />
@@ -28,7 +28,7 @@
       <main class="booking-main">
         <section class="booking-hero section-pad">
           <div class="booking-intro">
-            <p class="eyebrow"><span class="eyebrow-line"></span> Project booking · secure checkout</p>
+            <p class="eyebrow"><span class="eyebrow-line"></span> Project booking · direct UPI transfer</p>
             <h1>Let’s make it<br /><em>official.</em></h1>
             <p class="booking-lead">Tell me what you’re looking to build, then choose the advance amount that works for the project. The minimum booking advance is <strong>₹300.</strong></p>
             <div class="booking-steps">
@@ -36,7 +36,7 @@
               <div><span>02</span><p>Describe the<br />project</p></div>
               <div><span>03</span><p>Choose an<br />advance amount</p></div>
             </div>
-            <div class="booking-security"><span class="security-icon">✳</span><p>Payments open in Razorpay Checkout. Your card or UPI details are entered there, never in this form.</p></div>
+            <div class="booking-security"><span class="security-icon">✳</span><p>Pay the requested advance to Sam’s UPI ID. Transfer references are reviewed manually before project access is activated.</p></div>
             <a class="booking-whatsapp" data-booking-whatsapp href="#" hidden target="_blank" rel="noreferrer">Need to discuss the scope first? Message me on WhatsApp ↗</a>
           </div>
 
@@ -61,10 +61,19 @@
               <label class="field field-full"><span>Advance to pay now <b>*</b></span><div class="money-input money-input-advance"><span>₹</span><input name="advanceAmountRupees" id="advance-amount" type="number" inputmode="numeric" min="300" max="500000" step="1" value="300" required aria-describedby="advance-help" /></div><small id="advance-help">Enter ₹300–₹5,00,000. You can change the amount before checkout.</small></label>
               <div class="amount-summary"><span>Amount due now</span><strong id="amount-summary">₹300</strong><small>INR · one-time payment</small></div>
 
-              <label class="booking-consent"><input id="booking-consent" type="checkbox" required /><span>I confirm these project and contact details are correct, and agree to have them attached to my Razorpay order so Sam can follow up. <b>*</b></span></label>
-              <p class="booking-terms">Please agree the project scope and any cancellation or refund terms with Sam before paying. The customer and project details above are sent to Razorpay as order notes; this website does not save them in a separate database.</p>
-              <button class="pay-button" id="pay-button" type="submit"><span class="pay-button-label">Continue to secure payment</span><span aria-hidden="true">↗</span></button>
+              <label class="booking-consent"><input id="booking-consent" type="checkbox" required /><span>I confirm these project and contact details are correct, and agree that Sam stores them and any UPI references I submit to manage this booking. <b>*</b></span></label>
+              <p class="booking-terms">Please agree the project scope and any cancellation or refund terms with Sam before paying. Keep your UPI reference. Do not submit bank passwords, OTPs or card details here. Your project page remains locked until Sam verifies the transfer.</p>
+              <button class="pay-button" id="pay-button" type="submit"><span class="pay-button-label">Create booking and show UPI payment</span><span aria-hidden="true">↗</span></button>
               <div class="payment-status" id="payment-status" role="status" aria-live="polite"></div>
+              <section class="upi-panel" id="upi-panel" hidden aria-labelledby="upi-heading">
+                <div class="upi-panel-heading"><span class="booking-label">MANUAL UPI TRANSFER</span><h3 id="upi-heading">Pay your booking advance</h3></div>
+                <p>Transfer the exact amount below. Your project link is private; share it only with the customer.</p>
+                <div class="upi-details"><span>Pay to</span><strong id="upi-id">samjebaraj2412-1@oksbi</strong><button class="copy-upi" id="copy-upi" type="button">Copy UPI ID</button></div>
+                <div class="amount-summary"><span>Transfer this advance</span><strong id="upi-amount">₹300</strong><small>Use the project reference in the UPI note if your app allows it.</small></div>
+                <a class="pay-button upi-launch" id="upi-launch" href="#" rel="noreferrer"><span>Open your UPI app</span><span aria-hidden="true">↗</span></a>
+                <p class="upi-reminder">After transfer, open the project page and submit the UPI reference (UTR). It will stay pending until Sam checks the bank transaction.</p>
+                <a class="portal-link" id="portal-link" href="#">Open private project page ↗</a>
+              </section>
             </form>
           </div>
         </section>

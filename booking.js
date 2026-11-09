@@ -5,6 +5,7 @@ const amountSummary = document.querySelector("#amount-summary");
 const paymentStatus = document.querySelector("#payment-status");
 const payButton = document.querySelector("#pay-button");
 const projectType = document.querySelector("#project-type");
+const upiPanel = document.querySelector("#upi-panel");
 const currency = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
 
 const queryPackage = new URLSearchParams(window.location.search).get("package");
@@ -18,6 +19,16 @@ function updateAmount() {
 function setStatus(message, state = "pending") {
   paymentStatus.textContent = message;
   paymentStatus.dataset.state = state;
+}
+
+function makeUpiUrl(amount, projectId) {
+  const url = new URL("upi://pay");
+  url.searchParams.set("pa", bookingConfig.upiId || "");
+  url.searchParams.set("pn", bookingConfig.displayName || "Sam Jebaraj S");
+  url.searchParams.set("am", Number(amount).toFixed(2));
+  url.searchParams.set("cu", "INR");
+  url.searchParams.set("tn", `Project advance ${projectId.slice(0, 8)}`);
+  return url.toString();
 }
 
 amountInput.addEventListener("input", updateAmount);
@@ -44,22 +55,6 @@ bookingNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click
   bookingNav.classList.remove("is-open");
 }));
 
-async function loadRazorpayCheckout() {
-  if (window.Razorpay) return;
-  await new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.onload = resolve;
-    script.onerror = () => reject(new Error("Razorpay Checkout could not be loaded. Please try again."));
-    document.head.append(script);
-  });
-}
-
-async function readJson(response) {
-  try { return await response.json(); }
-  catch { return {}; }
-}
-
 bookingForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!bookingForm.reportValidity()) return;
@@ -68,6 +63,10 @@ bookingForm.addEventListener("submit", async (event) => {
   if (!Number.isInteger(amount) || amount < 300 || amount > 500000) {
     setStatus("Enter a whole-rupee advance from ₹300 to ₹5,00,000.", "error");
     amountInput.focus();
+    return;
+  }
+  if (!bookingConfig.upiId) {
+    setStatus("Sam’s UPI payment details are not configured yet. Please use WhatsApp.", "error");
     return;
   }
 
@@ -82,88 +81,41 @@ bookingForm.addEventListener("submit", async (event) => {
   };
 
   payButton.disabled = true;
-  payButton.querySelector(".pay-button-label").textContent = "Preparing secure checkout…";
-  setStatus("Creating your Razorpay order. Your card or UPI details stay in Razorpay Checkout.");
+  payButton.querySelector(".pay-button-label").textContent = "Creating your private project page…";
+  setStatus("Saving your request securely and preparing your UPI transfer.");
 
   try {
-    const orderResponse = await fetch("/api/create-order", {
+    const response = await fetch("/api/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "same-origin",
       body: JSON.stringify(payload)
     });
-    const order = await readJson(orderResponse);
-    if (!orderResponse.ok) throw new Error(order.error || "Could not start checkout. Please try again.");
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || "Could not create the project request. Please try again.");
 
-    await loadRazorpayCheckout();
-    let paymentHandlerStarted = false;
-    const checkout = new window.Razorpay({
-      key: order.keyId,
-      amount: order.amount,
-      currency: order.currency,
-      order_id: order.orderId,
-      name: bookingConfig.displayName || "Sam Jebaraj S",
-      description: `Project booking advance - ${projectType.options[projectType.selectedIndex].text}`,
-      prefill: {
-        name: payload.customerName,
-        email: payload.customerEmail,
-        contact: payload.customerPhone
-      },
-      notes: { project_type: projectType.value },
-      theme: { color: "#A6B1E1" },
-      modal: {
-        ondismiss: () => {
-          if (!paymentHandlerStarted) {
-            setStatus("Checkout closed. No booking advance has been confirmed.", "pending");
-            payButton.disabled = false;
-            payButton.querySelector(".pay-button-label").textContent = "Continue to secure payment";
-          }
-        }
-      },
-      handler: async (paymentResult) => {
-        paymentHandlerStarted = true;
-        setStatus("Payment received by checkout. Verifying it securely…");
-        try {
-          const verifyResponse = await fetch("/api/verify-payment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "same-origin",
-            body: JSON.stringify({
-              razorpay_order_id: paymentResult.razorpay_order_id,
-              razorpay_payment_id: paymentResult.razorpay_payment_id,
-              razorpay_signature: paymentResult.razorpay_signature
-            })
-          });
-          const verification = await readJson(verifyResponse);
-          if (verification.captured) {
-            setStatus(`Advance payment verified. Booking reference: ${verification.orderId}. Your project details are attached to the Razorpay order for Sam.`, "success");
-            bookingForm.reset();
-            amountInput.value = "300";
-            updateAmount();
-          } else if (verification.verified) {
-            setStatus(`Payment is authorized but still awaiting capture. Booking reference: ${verification.orderId}. Please contact Sam to confirm the payment status.`, "pending");
-          } else {
-            throw new Error(verification.error || `Payment verification could not be completed. Share this reference with Sam: ${paymentResult.razorpay_order_id}`);
-          }
-        } catch (error) {
-          setStatus(error.message || "Payment verification could not be completed. Please contact Sam with your order reference.", "error");
-        } finally {
-          payButton.disabled = false;
-          payButton.querySelector(".pay-button-label").textContent = "Continue to secure payment";
-        }
+    document.querySelector("#upi-id").textContent = bookingConfig.upiId;
+    document.querySelector("#upi-amount").textContent = currency.format(result.advanceAmountRupees);
+    document.querySelector("#upi-launch").href = makeUpiUrl(result.advanceAmountRupees, result.projectId);
+    document.querySelector("#portal-link").href = result.portalUrl;
+    document.querySelector("#portal-link").textContent = "Open your private project page ↗";
+    document.querySelector("#copy-upi").addEventListener("click", async (copyEvent) => {
+      const button = copyEvent.currentTarget;
+      try {
+        await navigator.clipboard.writeText(bookingConfig.upiId);
+        button.textContent = "Copied";
+      } catch {
+        button.textContent = "Copy unavailable";
       }
-    });
-
-    checkout.on("payment.failed", (failure) => {
-      const reference = failure.error?.metadata?.order_id;
-      setStatus(reference ? `The payment was not completed. You can retry or share this reference with Sam: ${reference}` : "The payment was not completed. You can retry checkout or contact Sam.", "error");
-      payButton.disabled = false;
-      payButton.querySelector(".pay-button-label").textContent = "Continue to secure payment";
-    });
-    checkout.open();
+    }, { once: true });
+    upiPanel.hidden = false;
+    bookingForm.querySelectorAll("input, select, textarea").forEach((field) => { field.disabled = true; });
+    payButton.querySelector(".pay-button-label").textContent = "Booking request created";
+    setStatus("Transfer the amount shown, then use your private project page to submit the UPI reference (UTR). Sam will verify it manually before unlocking the preview.", "success");
+    upiPanel.scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (error) {
-    setStatus(error.message || "Could not start checkout. Please contact Sam.", "error");
+    setStatus(error.message || "Could not create the booking. Please contact Sam.", "error");
     payButton.disabled = false;
-    payButton.querySelector(".pay-button-label").textContent = "Continue to secure payment";
+    payButton.querySelector(".pay-button-label").textContent = "Create booking and show UPI payment";
   }
 });

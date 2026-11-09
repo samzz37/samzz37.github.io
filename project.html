@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#16182d" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="description" content="Private project progress and delivery portal." />
+    <title>Private Project Portal — Sam Jebaraj S</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking.css" />
+    <link rel="stylesheet" href="project.css" />
+    <script src="config.js" defer></script>
+    <script src="project.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell portal-shell">
+      <header class="site-header portal-header">
+        <a class="wordmark" href="index.html" aria-label="Sam Jebaraj S, home">SJ<span>.</span></a>
+        <span class="portal-private-label"><i></i> PRIVATE PROJECT PAGE</span>
+        <a class="header-cta" href="index.html">Back to portfolio <span aria-hidden="true">↑</span></a>
+      </header>
+
+      <main class="portal-main section-pad">
+        <section class="portal-heading">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Project delivery · secure access</p>
+          <h1 id="portal-title">Your project,<br /><em>in progress.</em></h1>
+          <p class="portal-lead">This private page tracks verified transfers, project progress, and delivery.</p>
+        </section>
+
+        <p class="portal-message" id="portal-message" role="status" aria-live="polite">Loading your private project page…</p>
+
+        <section class="portal-content" id="portal-content" hidden>
+          <div class="project-overview portal-card">
+            <div class="project-overview-top"><span class="booking-label">PROJECT REFERENCE</span><span id="project-reference" class="reference-code"></span></div>
+            <h2 id="project-greeting"></h2>
+            <p class="project-brief" id="project-brief"></p>
+            <div class="project-overview-bottom"><span id="project-kind"></span><span id="project-created"></span></div>
+          </div>
+
+          <div class="portal-stats">
+            <article class="portal-stat"><span>Verified payments</span><strong id="paid-amount">₹0</strong><small>Only Sam-confirmed UPI transfers count here</small></article>
+            <article class="portal-stat"><span>Agreed project price</span><strong id="total-amount">Awaiting quote</strong><small id="quote-caption">Sam will add the confirmed scope and price</small></article>
+            <article class="portal-stat portal-stat-accent"><span>Remaining balance</span><strong id="due-amount">—</strong><small id="due-caption">Updates after payment review</small></article>
+          </div>
+
+          <section class="portal-card transfer-card" id="transfer-card">
+            <div class="portal-section-heading"><div><span class="booking-label">UPI TRANSFER</span><h2 id="transfer-title">Booking advance</h2></div><span class="portal-step">01</span></div>
+            <div class="transfer-instructions" id="transfer-instructions"></div>
+            <div class="upi-details portal-upi-details"><span>Pay to</span><strong id="portal-upi-id"></strong><button class="copy-upi" id="portal-copy-upi" type="button">Copy UPI ID</button></div>
+            <div class="amount-summary"><span id="transfer-amount-label">Requested transfer</span><strong id="transfer-amount">—</strong><small>INR · direct UPI transfer</small></div>
+            <a class="pay-button upi-launch" id="portal-upi-launch" href="#"><span>Open your UPI app</span><span aria-hidden="true">↗</span></a>
+            <form class="utr-form" id="utr-form">
+              <label class="field"><span>Amount transferred (₹) <b>*</b></span><input id="utr-amount" type="number" min="1" max="10000000" step="1" required inputmode="numeric" /></label>
+              <label class="field"><span>UPI transaction reference / UTR <b>*</b></span><input id="utr-reference" type="text" maxlength="50" required autocomplete="off" placeholder="Enter the reference from your UPI app" /></label>
+              <button class="pay-button" id="report-button" type="submit"><span>Submit transfer reference for review</span><span aria-hidden="true">→</span></button>
+              <p class="portal-small-print">Submitting a UTR does not mark a payment as received. Sam checks the actual bank transaction before confirming it.</p>
+            </form>
+            <p class="reported-notice" id="reported-notice" hidden></p>
+          </section>
+
+          <section class="portal-card media-card" id="preview-card" hidden>
+            <div class="portal-section-heading"><div><span class="booking-label">PROJECT PREVIEW</span><h2>Your progress video</h2></div><span class="media-access media-access-open">AVAILABLE</span></div>
+            <p>Preview access is active after the booking advance has been verified.</p>
+            <video id="preview-video" controls playsinline preload="metadata" controlslist="nodownload" referrerpolicy="no-referrer"></video>
+          </section>
+
+          <section class="portal-card media-card final-card" id="final-card" hidden>
+            <div class="portal-section-heading"><div><span class="booking-label">FINAL DELIVERY</span><h2>Your finished project</h2></div><span class="media-access media-access-open">UNLOCKED</span></div>
+            <p>All payments have been verified. Your final video is ready to view and download.</p>
+            <video id="final-video" controls playsinline preload="metadata" referrerpolicy="no-referrer"></video>
+            <a class="pay-button download-button" id="download-final" href="#" download><span>Download final project video</span><span aria-hidden="true">↓</span></a>
+          </section>
+
+          <section class="portal-card payment-history-card">
+            <div class="portal-section-heading"><div><span class="booking-label">PAYMENT HISTORY</span><h2>Transfer activity</h2></div><button class="refresh-button" id="refresh-portal" type="button">Refresh status</button></div>
+            <div class="payment-history" id="payment-history"></div>
+          </section>
+          <p class="portal-help">Questions about scope, transfer checks or the delivery? <a data-portal-whatsapp href="#" target="_blank" rel="noreferrer">Message Sam on WhatsApp ↗</a></p>
+        </section>
+      </main>
+
+      <footer class="site-footer"><a class="wordmark" href="index.html">SJ<span>.</span></a><span>Private project portal · Sam Jebaraj S</span><span><a href="index.html">Back to portfolio ↑</a></span></footer>
+    </div>
+  </body>
+</html>

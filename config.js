@@ -8,6 +8,7 @@ window.PORTFOLIO_CONFIG = {
   instagramUrl: "https://www.instagram.com/samjebaraj_37/",
   instagramSecondaryUrl: "https://www.instagram.com/calista._xo/",
   whatsappNumber: "919361061645", // country code + number, digits only
+  upiId: "samjebaraj2412-1@oksbi",
   resumePath: "assets/sam-jebaraj-s-resume.pdf",
   prices: {
     starter: "₹500+",
