@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#16182d" />
+    <meta name="description" content="Share your project details and pay a project booking advance with Sam Jebaraj S." />
+    <title>Book a Project — Sam Jebaraj S</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking.css" />
+    <script src="config.js" defer></script>
+    <script src="booking.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell booking-shell">
+      <header class="site-header">
+        <a class="wordmark" href="index.html" aria-label="Sam Jebaraj S, home">SJ<span>.</span></a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="booking-nav" aria-label="Open navigation"><span></span><span></span></button>
+        <nav class="main-nav" id="booking-nav" aria-label="Main navigation">
+          <a href="index.html#work">Projects</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#about">About</a>
+          <a class="nav-active" href="booking.html" aria-current="page">Book a project</a>
+        </nav>
+        <a class="header-cta" href="index.html"><span aria-hidden="true">←</span> Back to portfolio</a>
+      </header>
+
+      <main class="booking-main">
+        <section class="booking-hero section-pad">
+          <div class="booking-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> Project booking · secure checkout</p>
+            <h1>Let’s make it<br /><em>official.</em></h1>
+            <p class="booking-lead">Tell me what you’re looking to build, then choose the advance amount that works for the project. The minimum booking advance is <strong>₹300.</strong></p>
+            <div class="booking-steps">
+              <div><span>01</span><p>Share your<br />contact details</p></div>
+              <div><span>02</span><p>Describe the<br />project</p></div>
+              <div><span>03</span><p>Choose an<br />advance amount</p></div>
+            </div>
+            <div class="booking-security"><span class="security-icon">✳</span><p>Payments open in Razorpay Checkout. Your card or UPI details are entered there, never in this form.</p></div>
+            <a class="booking-whatsapp" data-booking-whatsapp href="#" hidden target="_blank" rel="noreferrer">Need to discuss the scope first? Message me on WhatsApp ↗</a>
+          </div>
+
+          <div class="booking-card">
+            <div class="booking-card-heading"><div><span class="booking-label">PROJECT REQUEST</span><h2>Your project details</h2></div><span class="booking-card-mark">SJ<span>.</span></span></div>
+            <form id="booking-form" novalidate>
+              <div class="field-group-title"><span>01</span> Your contact information</div>
+              <div class="field-grid">
+                <label class="field"><span>Full name <b>*</b></span><input name="customerName" id="customer-name" autocomplete="name" maxlength="80" required placeholder="Your name" /></label>
+                <label class="field"><span>Email address <b>*</b></span><input name="customerEmail" id="customer-email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" /></label>
+                <label class="field field-full"><span>Phone or WhatsApp <b>*</b></span><input name="customerPhone" id="customer-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" required placeholder="+91 98765 43210" /></label>
+              </div>
+
+              <div class="field-group-title"><span>02</span> About the project</div>
+              <div class="field-grid">
+                <label class="field field-full"><span>What would you like to build? <b>*</b></span><select name="projectType" id="project-type" required><option value="starter">Starter website</option><option value="business">Business website</option><option value="custom">Online shop or custom web app</option></select></label>
+                <label class="field field-full"><span>Project brief <b>*</b></span><textarea name="projectBrief" id="project-brief" minlength="20" maxlength="1000" required placeholder="What should the website or app do? Who will use it? Include any important features."></textarea><small>20–1,000 characters</small></label>
+                <label class="field field-full"><span>Estimated total project budget <small>(optional)</small></span><div class="money-input"><span>₹</span><input name="projectBudget" id="project-budget" type="number" inputmode="numeric" min="0" max="10000000" step="1" placeholder="Add if you have a budget in mind" /></div></label>
+              </div>
+
+              <div class="field-group-title"><span>03</span> Choose the booking advance</div>
+              <label class="field field-full"><span>Advance to pay now <b>*</b></span><div class="money-input money-input-advance"><span>₹</span><input name="advanceAmountRupees" id="advance-amount" type="number" inputmode="numeric" min="300" max="500000" step="1" value="300" required aria-describedby="advance-help" /></div><small id="advance-help">Enter ₹300–₹5,00,000. You can change the amount before checkout.</small></label>
+              <div class="amount-summary"><span>Amount due now</span><strong id="amount-summary">₹300</strong><small>INR · one-time payment</small></div>
+
+              <label class="booking-consent"><input id="booking-consent" type="checkbox" required /><span>I confirm these project and contact details are correct, and agree to have them attached to my Razorpay order so Sam can follow up. <b>*</b></span></label>
+              <p class="booking-terms">Please agree the project scope and any cancellation or refund terms with Sam before paying. The customer and project details above are sent to Razorpay as order notes; this website does not save them in a separate database.</p>
+              <button class="pay-button" id="pay-button" type="submit"><span class="pay-button-label">Continue to secure payment</span><span aria-hidden="true">↗</span></button>
+              <div class="payment-status" id="payment-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><a class="wordmark" href="index.html" aria-label="Back to portfolio">SJ<span>.</span></a><span>Project advance · minimum ₹300</span><span><a href="index.html">Back to portfolio ↑</a></span></footer>
+    </div>
+  </body>
+</html>

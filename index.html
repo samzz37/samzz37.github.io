@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#091214" />
+    <meta name="description" content="Sam Jebaraj S builds useful web applications, business websites, and online shops." />
+    <title>Sam Jebaraj S — Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="Sam Jebaraj S, home">SJ<span>.</span></a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span></button>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <a href="#work">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="booking.html">Book a project</a>
+        </nav>
+        <a class="header-cta" href="booking.html"><span class="status-dot"></span> Book a project <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main>
+        <section class="hero section-pad" id="top">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> Web developer · MCA student</p>
+            <h1>Useful ideas,<br />built into <em>real things.</em></h1>
+            <p class="hero-intro">I build business websites, online shops and custom web applications that make everyday work easier — and help good businesses grow online.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#work">See what I’ve built <span aria-hidden="true">↓</span></a>
+              <a class="text-link" href="#services">View services &amp; pricing <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-proof"><span class="proof-mark">✳</span><span>Thoughtful design</span><span class="proof-sep">/</span><span>Practical development</span></div>
+          </div>
+
+          <div class="hero-art" aria-label="Sam's profile and animated three-dimensional artwork">
+            <div class="art-grid"></div><div class="art-glow"></div>
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+            <div class="scene" id="scene" aria-hidden="true">
+              <div class="cube-wrap"><div class="cube">
+                <div class="cube-face face-front"><span class="face-index">BUILD / 01</span><span class="face-glyph">✳</span><span class="face-caption">IDEAS INTO<br />INTERFACES</span></div>
+                <div class="cube-face face-back"><span class="face-glyph">◌</span><span class="face-caption">MADE TO<br />BE USEFUL</span></div>
+              <div class="cube-face face-right"><span class="face-index">WEB</span><span class="face-glyph">↗</span></div>
+                <div class="cube-face face-left"><span class="face-glyph">⌘</span><span class="face-caption">CODE WITH<br />CARE</span></div>
+                <div class="cube-face face-top"><span class="top-orb"></span></div>
+                <div class="cube-face face-bottom"><span class="bottom-mark">DESIGN / BUILD</span></div>
+              </div></div>
+            </div>
+            <div class="profile-card"><img class="profile-avatar" src="assets/sam-profile.jpg" alt="Sam Jebaraj S" /><span class="profile-caption"><strong>Sam Jebaraj S</strong><small>Web developer · Python developer</small></span><span class="profile-arrow">↗</span></div>
+            <div class="floating-chip chip-one"><span class="chip-spark">✦</span>Design <i>+</i> development</div>
+            <div class="floating-chip chip-two"><span class="chip-dot"></span>Built for real-world use</div>
+            <div class="art-caption"><span>CREATIVE CODE</span><span>FIG. 01 / ALWAYS IN PROGRESS</span></div>
+          </div>
+          <div class="hero-bottom"><span>Based on real work from my GitHub</span><a href="#work">Scroll to projects <span aria-hidden="true">↓</span></a></div>
+        </section>
+
+        <section class="ticker" aria-label="Web apps, business websites, and online shops"><div class="ticker-track"><span>Web applications</span><i>✳</i><span>Business websites</span><i>✳</i><span>Online shops</span><i>✳</i><span>Web applications</span><i>✳</i><span>Business websites</span><i>✳</i><span>Online shops</span><i>✳</i></div></section>
+
+        <section class="work-section section-pad" id="work">
+          <div class="section-heading reveal">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span> Selected builds · pulled from GitHub</p><h2>Projects made<br />to solve <em>something.</em></h2></div>
+            <p class="heading-aside">A few real builds — from business tools to online ordering. Open a project to explore the code, screenshots and features.</p>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card project-wide reveal" data-repo="icecream-shop">
+              <a class="project-visual visual-icecream" href="https://github.com/samzz37/icecream-shop" target="_blank" rel="noreferrer" aria-label="Open Ice Cream Shop Management System on GitHub">
+                <img src="https://raw.githubusercontent.com/samzz37/icecream-shop/main/assets/screenshots/home-page.png" alt="Ice cream shop website project screenshot" loading="lazy" />
+                <span class="image-wash"></span><span class="visual-label">ONLINE ORDERING · BUSINESS TOOLS</span><span class="visual-number">01 / 03</span><span class="visual-project-name">Ice Cream<br />Shop System</span><span class="visual-open">Open project ↗</span>
+              </a>
+              <div class="project-meta"><div><h3>Ice Cream Shop Management System</h3><p>Product catalogue, shopping cart, customer ordering and an admin dashboard.</p></div><div class="project-tags"><span>PHP</span><span>MySQL</span><span>E-commerce</span></div><span class="project-stats" aria-live="polite">GitHub project</span></div>
+            </article>
+
+            <article class="project-card reveal" data-repo="college-event-management-system">
+              <a class="project-visual visual-event" href="https://github.com/samzz37/college-event-management-system" target="_blank" rel="noreferrer" aria-label="Open College Event Management System on GitHub">
+                <img src="https://raw.githubusercontent.com/samzz37/college-event-management-system/main/assets/screenshots/home-page.png" alt="College event management website project screenshot" loading="lazy" />
+                <span class="image-wash"></span><span class="visual-label">EVENTS · REGISTRATION · ADMIN</span><span class="visual-number">02 / 03</span><span class="visual-project-name">College Event<br />Management</span><span class="visual-open">Open project ↗</span>
+              </a>
+              <div class="project-meta"><div><h3>College Event Management</h3><p>Event discovery and registration with admin tools for participants.</p></div><div class="project-tags"><span>PHP</span><span>MySQL</span></div><span class="project-stats" aria-live="polite">GitHub project</span></div>
+            </article>
+
+            <article class="project-card reveal" data-repo="secure-document-verification-system">
+              <a class="project-visual visual-secure" href="https://github.com/samzz37/secure-document-verification-system" target="_blank" rel="noreferrer" aria-label="Open Secure Document Verification System on GitHub">
+                <div class="dashboard-mock" aria-hidden="true"><div class="mock-sidebar"><b>S.</b><i></i><i></i><i></i><i></i></div><div class="mock-main"><span class="mock-topline"></span><span class="mock-title">Verification overview</span><div class="mock-metrics"><i></i><i></i><i></i></div><div class="mock-table"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div><div class="mock-shield">✓</div></div>
+                <span class="visual-label">REVIEW · APPROVAL · TRACKING</span><span class="visual-number">03 / 03</span><span class="visual-project-name">Secure Document<br />Verification</span><span class="visual-open">Open project ↗</span>
+              </a>
+              <div class="project-meta"><div><h3>Secure Document Verification</h3><p>Role-based document review, approval workflows and risk alerts.</p></div><div class="project-tags"><span>PHP</span><span>MySQL</span></div><span class="project-stats" aria-live="polite">GitHub project</span></div>
+            </article>
+          </div>
+          <div class="github-bar reveal"><span><span class="status-dot"></span> Project links open on GitHub</span><a data-github-all href="https://github.com/samzz37?tab=repositories" target="_blank" rel="noreferrer">Browse all repositories <span aria-hidden="true">↗</span></a></div>
+        </section>
+
+        <section class="services-section section-pad" id="services">
+          <div class="section-heading reveal">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span> What I can build for you</p><h2>Good work.<br /><em>Honest prices.</em></h2></div>
+            <p class="heading-aside">Choose a starting point. We’ll agree on the scope and final price before work begins.</p>
+          </div>
+          <div class="price-grid">
+            <article class="price-card reveal"><div class="price-top"><span class="price-index">01 / STARTER</span><span class="price-icon">↗</span></div><h3>Starter Website</h3><p class="price-desc">A clean one-page website for your portfolio, service or small business.</p><p class="price-from">Starting at</p><p class="price-amount"><span data-price="starter">₹500+</span></p><ul><li>One-page mobile-friendly design</li><li>Contact links and enquiry CTA</li><li>Free static hosting setup</li></ul><a class="price-button" href="booking.html?package=starter">Book this package <span>↗</span></a></article>
+            <article class="price-card price-featured reveal"><div class="price-ribbon">POPULAR</div><div class="price-top"><span class="price-index">02 / BUSINESS</span><span class="price-icon">✳</span></div><h3>Business Website</h3><p class="price-desc">A multi-page presence to explain your services and turn visitors into enquiries.</p><p class="price-from">Starting at</p><p class="price-amount"><span data-price="business">₹2,500+</span></p><ul><li>Up to five pages</li><li>Mobile-first layout and enquiry form</li><li>Basic SEO setup and free hosting</li></ul><a class="price-button" href="booking.html?package=business">Book this package <span>↗</span></a></article>
+            <article class="price-card reveal"><div class="price-top"><span class="price-index">03 / CUSTOM</span><span class="price-icon">⌘</span></div><h3>Shop or Web App</h3><p class="price-desc">Online ordering, a dashboard or a custom tool planned around your workflow.</p><p class="price-from">Starting at</p><p class="price-amount"><span data-price="custom">₹5,000+</span></p><ul><li>Custom feature and page planning</li><li>Database and admin workflows</li><li>Milestone-based delivery</li></ul><a class="price-button" href="booking.html?package=custom">Book this package <span>↗</span></a></article>
+          </div>
+          <p class="pricing-note">Starting prices are indicative. Final quote depends on features, content and integrations. Project booking advances start at ₹300. Domain registration and third-party services are separate.</p>
+        </section>
+
+        <section class="about-section section-pad" id="about">
+          <div class="about-top reveal"><p class="eyebrow"><span class="eyebrow-line"></span> The person behind the projects</p><span class="about-stamp">BUILD WITH CARE<br />SHIP WITH PURPOSE <b>✳</b></span></div>
+          <div class="about-content reveal"><div><h2>Hi, I’m Sam.<br />I make tech<br /><em>work for people.</em></h2><a class="resume-link" data-resume href="" hidden download>Download my resume <span aria-hidden="true">↓</span></a></div><div class="about-copy"><p class="about-lead">I’m Sam Jebaraj S — an MCA student and developer building practical software for real workflows.</p><p>I enjoy taking a project from a rough idea to a working interface: understanding the need, shaping the experience and building the code behind it. My work spans PHP and MySQL web applications, Python projects and business tools.</p><div class="capabilities"><span>Full-stack web apps</span><span>PHP · MySQL</span><span>Python</span><span>Business websites</span></div></div></div>
+          <div class="about-foot reveal"><span>Currently open to freelance projects</span><span>Clear scope · Friendly updates · Fair starting prices <i class="status-dot"></i></span></div>
+        </section>
+
+        <section class="contact-section section-pad" id="contact">
+          <div class="contact-orb" aria-hidden="true"><span>✳</span></div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> Have a project in mind?</p>
+          <h2>Let’s build<br />something <em>useful.</em></h2>
+          <p class="contact-intro">Tell me what you’re trying to make. I’ll reply with a few questions and a clear next step.</p>
+          <div class="contact-actions"><a class="button button-primary" data-whatsapp href="#" hidden target="_blank" rel="noreferrer">Message me on WhatsApp <span aria-hidden="true">↗</span></a><a class="button button-outline" data-linkedin href="https://www.linkedin.com/in/sam-jebaraj-s-6273781b1/" target="_blank" rel="noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
+          <div class="social-row" aria-label="Social profiles and resume"><a data-social="github" data-github-profile href="https://github.com/samzz37" target="_blank" rel="noreferrer">GitHub <span>↗</span></a><a data-social="linkedin" href="https://www.linkedin.com/in/sam-jebaraj-s-6273781b1/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a><a data-social="instagram" href="#" hidden target="_blank" rel="noreferrer">Instagram · Sam <span>↗</span></a><a data-social="instagram-secondary" href="#" hidden target="_blank" rel="noreferrer">Instagram · Calista <span>↗</span></a><a data-social="whatsapp" href="#" hidden target="_blank" rel="noreferrer">WhatsApp <span>↗</span></a><a data-social="resume" href="#" hidden download>Resume <span>↓</span></a></div>
+          <div class="contact-bottom"><span>Thanks for stopping by.</span><a href="#top">Back to top ↑</a></div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><a class="wordmark" href="#top" aria-label="Back to top">SJ<span>.</span></a><span>Made by Sam Jebaraj S</span><span>© <span id="year">2026</span></span></footer>
+    </div>
+  </body>
+</html>
